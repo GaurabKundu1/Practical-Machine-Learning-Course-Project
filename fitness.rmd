@@ -130,3 +130,61 @@ cmgbm <- confusionMatrix(pred_gbm, factor(valid$classe))
 cmgbm
 ```
 
+# Support Vector Machine
+
+```{r}
+mod_svm <- train(classe~., data=train, method="svmLinear", trControl = control, tuneLength = 5, verbose = F)
+
+pred_svm <- predict(mod_svm, valid)
+cmsvm <- confusionMatrix(pred_svm, factor(valid$classe))
+cmsvm
+```
+
+# Results (Accuracy & Out of Sample Error)
+
+    ##      accuracy oos_error
+    ## Tree    0.537     0.463
+    ## RF      0.996     0.004
+    ## GBM     0.992     0.008
+    ## SVM     0.781     0.219
+    
+The best model is the Random Forest model, with 0.9957519 accuracy and 0.0042481 out of sample error rate. We find that to be a sufficient enough model to use for our test sets.
+
+# Predictions on Test Set
+
+Running our test set to predict the classe (5 levels) outcome for 20 cases with the Random Forest model.
+
+```{r}
+pred <- predict(mod_rf, testcsv)
+print(pred)
+```
+
+# Appendix
+
+## correlation matrix of variables in training set
+
+```{r}
+corrPlot <- cor(train[, -length(names(train))])
+corrplot(corrPlot, method="color")
+```
+
+## Plotting the models
+
+### Decision Trees
+
+```{r}
+plot(mod_trees)
+```
+
+### Random Forest
+
+```{r}
+plot(mod_rf)
+```
+
+### Gradient Boosted Trees
+
+```{r}
+plot(mod_gbm)
+```
+
