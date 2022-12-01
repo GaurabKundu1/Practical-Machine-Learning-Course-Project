@@ -1,0 +1,12 @@
+---
+title: "Monitoring Exercise of 6 Participants with Accelerometers Data"
+author: "Gaurab Kundu"
+date: "2022-12-01"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
