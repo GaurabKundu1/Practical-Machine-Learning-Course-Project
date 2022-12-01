@@ -397,6 +397,40 @@ please cite them as they have been very generous in allowing their data
 to be used for this kind of assignment.”</p>
 </div>
 </div>
+<div id="loading-required-libraries" class="section level1">
+<h1>Loading required Libraries</h1>
+<pre class="r"><code>library(lattice)
+library(ggplot2)</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 4.2.2</code></pre>
+<pre class="r"><code>library(caret)
+library(kernlab)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;kernlab&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
+## 
+##     alpha</code></pre>
+<pre class="r"><code>library(rattle)</code></pre>
+<pre><code>## Warning: package &#39;rattle&#39; was built under R version 4.2.2</code></pre>
+<pre><code>## Loading required package: tibble</code></pre>
+<pre><code>## Loading required package: bitops</code></pre>
+<pre><code>## Rattle: A free graphical interface for data science with R.
+## Version 5.5.1 Copyright (c) 2006-2021 Togaware Pty Ltd.
+## Type &#39;rattle()&#39; to shake, rattle, and roll your data.</code></pre>
+<pre class="r"><code>library(corrplot)</code></pre>
+<pre><code>## Warning: package &#39;corrplot&#39; was built under R version 4.2.2</code></pre>
+<pre><code>## corrplot 0.92 loaded</code></pre>
+<pre class="r"><code>set.seed(1234)</code></pre>
+</div>
+<div id="loading-the-data" class="section level1">
+<h1>Loading the Data</h1>
+<pre class="r"><code>traincsv &lt;- read.csv(&quot;https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv&quot;)
+testcsv &lt;- read.csv(&quot;https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv&quot;)
+
+dim(traincsv)</code></pre>
+<pre><code>## [1] 19622   160</code></pre>
+<pre class="r"><code>dim(testcsv)</code></pre>
+<pre><code>## [1]  20 160</code></pre>
+</div>
 
 
 
