@@ -41,6 +41,7 @@ library(caret)
 library(kernlab)
 library(rattle)
 library(corrplot)
+library(randomForest)
 set.seed(1234)
 ```
 
@@ -106,5 +107,15 @@ fancyRpartPlot(mod_trees$finalModel)
 pred_trees <- predict(mod_trees, valid)
 cmtrees <- confusionMatrix(pred_trees, factor(valid$classe))
 cmtrees
+```
+
+# Random Forest
+
+```{r}
+mod_rf <- train(classe~., data=train, method="rf", trControl = control, tuneLength = 5)
+
+pred_rf <- predict(mod_rf, valid)
+cmrf <- confusionMatrix(pred_rf, factor(valid$classe))
+cmrf
 ```
 
