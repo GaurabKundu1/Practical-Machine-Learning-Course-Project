@@ -91,3 +91,20 @@ Set up control for training to use 3-fold cross validation.
 control <- trainControl(method="cv", number=3, verboseIter=F)
 ```
 
+# Decision Trees
+
+## Model
+
+```{r}
+mod_trees <- train(classe~., data=train, method="rpart", trControl = control, tuneLength = 5)
+fancyRpartPlot(mod_trees$finalModel)
+```
+
+## Prediction
+
+```{r}
+pred_trees <- predict(mod_trees, valid)
+cmtrees <- confusionMatrix(pred_trees, factor(valid$classe))
+cmtrees
+```
+
