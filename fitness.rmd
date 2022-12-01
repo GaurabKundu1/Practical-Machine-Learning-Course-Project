@@ -54,3 +54,30 @@ dim(traincsv)
 dim(testcsv)
 ```
 
+We see that there are 160 variables and 19622 observations in the training set, while 20 for the test set.
+
+# Cleaning the Data
+
+Removing unnecessary variables. Starting with N/A variables.
+
+```{r}
+traincsv <- traincsv[,colMeans(is.na(traincsv)) < .9] #removing mostly NA columns.
+traincsv <- traincsv[,-c(1:7)] #removing metadata which is irrelevant to the outcome.
+```
+
+Removing near zero variance variables.
+
+```{r}
+nvz <- nearZeroVar(traincsv)
+traincsv <- traincsv[,-nvz]
+dim(traincsv)
+```
+
+Now that we have finished removing the unnecessary variables, we can now split the training set into a validation and sub training set. The testing set “testcsv” will be left alone, and used for the final quiz test cases.
+
+```{r}
+inTrain <- createDataPartition(y=traincsv$classe, p=0.7, list=F)
+train <- traincsv[inTrain,]
+valid <- traincsv[-inTrain,]
+```
+
