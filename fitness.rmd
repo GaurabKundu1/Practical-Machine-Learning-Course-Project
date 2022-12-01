@@ -42,6 +42,7 @@ library(kernlab)
 library(rattle)
 library(corrplot)
 library(randomForest)
+library(gbm)
 set.seed(1234)
 ```
 
@@ -117,5 +118,15 @@ mod_rf <- train(classe~., data=train, method="rf", trControl = control, tuneLeng
 pred_rf <- predict(mod_rf, valid)
 cmrf <- confusionMatrix(pred_rf, factor(valid$classe))
 cmrf
+```
+
+# Gradient Boosted Trees
+
+```{r}
+mod_gbm <- train(classe~., data=train, method="gbm", trControl = control, tuneLength = 5, verbose = F)
+
+pred_gbm <- predict(mod_gbm, valid)
+cmgbm <- confusionMatrix(pred_gbm, factor(valid$classe))
+cmgbm
 ```
 
