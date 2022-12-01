@@ -451,6 +451,16 @@ test cases.</p>
 train &lt;- traincsv[inTrain,]
 valid &lt;- traincsv[-inTrain,]</code></pre>
 </div>
+<div id="creating-and-testing-the-models" class="section level1">
+<h1>Creating and Testing the Models</h1>
+<p>Here we will test a few popular models including: <b>Decision
+Trees</b>, <b>Random Forest</b>, <b>Gradient Boosted Trees</b>, and
+<b>Support Vector Machines</b>. This is probably more than we will need
+to test, but just out of curiosity and good practice we will run them
+for comparison.</p>
+<p>Set up control for training to use 3-fold cross validation.</p>
+<pre class="r"><code>control &lt;- trainControl(method=&quot;cv&quot;, number=3, verboseIter=F)</code></pre>
+</div>
 
 
 

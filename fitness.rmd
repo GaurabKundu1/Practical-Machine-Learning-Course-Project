@@ -81,3 +81,13 @@ train <- traincsv[inTrain,]
 valid <- traincsv[-inTrain,]
 ```
 
+# Creating and Testing the Models
+
+Here we will test a few popular models including: <b>Decision Trees</b>, <b>Random Forest</b>, <b>Gradient Boosted Trees</b>, and <b>Support Vector Machines</b>. This is probably more than we will need to test, but just out of curiosity and good practice we will run them for comparison.
+
+Set up control for training to use 3-fold cross validation.
+
+```{r}
+control <- trainControl(method="cv", number=3, verboseIter=F)
+```
+
